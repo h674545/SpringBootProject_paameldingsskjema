@@ -34,25 +34,20 @@
 	</c:if>
 
 	<c:url var="postUrl" value="/paameldt"/>
-	<form action="${postUrl}" method="post" onsubmit="return validatePassword();">
-
-		Fornavn <input type="text" name="fornavn" placeholder="Fornavn" required /><br/>
-		Etternavn <input type="text" name="etternavn" placeholder="Etternavn" required /><br/>
-
-		Passord <input type="password" id="passord" name="passord" placeholder="Passord" required minlength="8"/><br/>
-		Gjenta passord <input type="password" id="passord2" name="passord2" placeholder="Gjenta passord" required minlength="8"/><br/>
-		<span id="passwordMatchMessage" style="color: red;"></span><br/>
-
-		Mobilnummer <input type="text" name="mobil" placeholder="Mobilnummer" required pattern="\d{8}" /><br/>
-
-		Kjønn:
-		<label for="kjonnMann">Mann</label>
-		<input id="kjonnMann" type="radio" name="kjonn" value="Mann" checked />
-		<label for="kjonnKvinne">Kvinne</label>
-		<input id="kjonnKvinne" type="radio" name="kjonn" value="Kvinne" />
-		<br/><br/>
-
-        <button type="submit">Meld meg på</button>
-	</form>
+<form action="${postUrl}" method="post" onsubmit="return validatePassword();">
+    Fornavn <input type="text" name="fornavn" placeholder="Fornavn" required /><br/>
+    Etternavn <input type="text" name="etternavn" placeholder="Etternavn" required /><br/>
+    Passord <input type="password" id="passord" name="passord" placeholder="Passord" required minlength="8"/><br/>
+    Gjenta passord <input type="password" id="passord2" name="passord2" placeholder="Gjenta passord" required minlength="8"/><br/>
+    <span id="passwordMatchMessage" style="color: red;"></span><br/>
+    Mobilnummer <input type="text" name="mobil" placeholder="Mobilnummer" required pattern="\d{8}" /><br/>
+    Kjønn:
+    <label for="kjonnMann">Mann</label>
+    <input id="kjonnMann" type="radio" name="kjonn" value="Mann" checked />
+    <label for="kjonnKvinne">Kvinne</label>
+    <input id="kjonnKvinne" type="radio" name="kjonn" value="Kvinne" />
+    <br/><br/>
+    <button type="submit">Send inn</button>
+</form>
 </body>
 </html>

@@ -3,41 +3,44 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-	<meta charset="UTF-8">
-	<title>Deltagerliste</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/simple.css">
+    <meta charset="UTF-8">
+    <title>Deltagerliste</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/simple.css">
+    <style>
+    tr.backgroundUserLogIn {
+        background-color: #8FBC8F;
+    }
+</style>
 </head>
 <body>
-
-<h2>Deltagerliste</h2>
-
-<c:if test="${empty deltagere}">
-	<p>Ingen påmeldte deltagere enda.</p>
-</c:if>
-
-<c:if test="${not empty deltagere}">
-<table>
-	<thead>
-	<tr>
-		<th>Fornavn</th>
-		<th>Etternavn</th>
-		<th>Mobil</th>
-		<th>Kjønn</th>
-	</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="d" items="${deltagere}">
-			<tr>
-				<td><c:out value="${d.fornavn}" default="(ikke oppgitt)" /></td>
-				<td><c:out value="${d.etternavn}" default="(ikke oppgitt)" /></td>
-				<td><c:out value="${d.mobil}" default="(ikke oppgitt)" /></td>
-				<td><c:out value="${d.kjonn}" default="(ikke oppgitt)" /></td>
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
-</c:if>
-
-<p><a href="${pageContext.request.contextPath}/paamelding">Ny påmelding</a></p>
+    <p>Du er innlogget som <c:out value="${innloggetDeltager.fornavn}"/> <c:out value="${innloggetDeltager.etternavn}"/></p>
+    <h2>Deltagerliste</h2>
+    <c:if test="${empty deltagere}">
+        <p>Ingen påmeldte deltagere enda.</p>
+    </c:if>
+    <c:if test="${not empty deltagere}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fornavn</th>
+                    <th>Etternavn</th>
+                    <th>Mobil</th>
+                    <th>Kjønn</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="d" items="${deltagere}">
+                    <tr class="${d.mobil == innloggetDeltager.mobil ? 'backgroundUserLogIn' : ''}">
+                        <td><c:out value="${d.fornavn}" default="(ikke oppgitt)" /></td>
+                        <td><c:out value="${d.etternavn}" default="(ikke oppgitt)" /></td>
+                        <td><c:out value="${d.mobil}" default="(ikke oppgitt)" /></td>
+                        <td><c:out value="${d.kjonn}" default="(ikke oppgitt)" /></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </c:if>
+    <p><a href="${pageContext.request.contextPath}/paamelding">Ny påmelding</a></p>
+    <p><a href="${pageContext.request.contextPath}/innlogging">Logg ut</a></p>
 </body>
 </html>
